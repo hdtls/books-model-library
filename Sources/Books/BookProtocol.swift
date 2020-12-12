@@ -1,6 +1,8 @@
 import Foundation
 
-public protocol BookProtocol: Equatable {
+public protocol Model: Identifiable, Equatable, Hashable {}
+
+public protocol BookProtocol: Model {
     var imageUrl: String? { get set }
     var title: String? { get set }
     var subtitle: String? { get set }
