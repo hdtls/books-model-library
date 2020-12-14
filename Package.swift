@@ -12,7 +12,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(name: "Books", targets: ["Books"]),
-        .library(name: "RxViewModel", targets: ["RxViewModel"])
+        .library(name: "RxVMLibrary", targets: ["RxVMLibrary"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,11 +25,11 @@ let package = Package(
             name: "Books",
             dependencies: [
                 .product(name: "Moya", package: "Moya"),
-                "RxViewModel"
+                "RxVMLibrary"
             ]
         ),
         .target(
-            name: "RxViewModel",
+            name: "RxVMLibrary",
             dependencies: []
         ),
         .testTarget(
