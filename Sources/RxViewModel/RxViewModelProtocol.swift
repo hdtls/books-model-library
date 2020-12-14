@@ -1,10 +1,3 @@
-//
-//  RxViewModelProtocol.swift
-//  universal
-//
-//  Created by Paul Harrison on 12/11/20.
-//
-
 import Foundation
 
 #if canImport(RxSwift) && canImport(RxRelay)
