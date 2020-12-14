@@ -1,2 +1,2 @@
-@_exported import RxViewModel
+@_exported import RxVMLibrary
 @_exported import Moya

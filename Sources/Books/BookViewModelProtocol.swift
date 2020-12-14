@@ -1,5 +1,5 @@
 import Foundation
-import RxViewModel
+import RxVMLibrary
 #if canImport(RxCocoa)
 import RxCocoa
 #endif
