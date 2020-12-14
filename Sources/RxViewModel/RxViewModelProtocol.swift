@@ -135,22 +135,13 @@ public protocol RxViewModelLifeCycle {}
 public protocol RxViewModelProtocol: ObservableObject, Identifiable, Hashable, RxViewModelLifeCycle {
     associatedtype Base: Hashable
     
-    var base: Base { get }
+    var base: Base { get set }
     var __base: Published<Base> { get }
     var _$base: Published<Base>.Publisher { get }
     
     var title: String { get set }
     var __title: Published<String> { get }
     var _$title: Published<String>.Publisher { get }
-    
-    init(title: String, base: Base)
-}
-
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension RxViewModelProtocol {
-    public init(base: Base) {
-        self.init(title: "", base: base)
-    }
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -169,11 +160,18 @@ extension RxViewModelProtocol {
     }
 }
 
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-
-protocol RxNestedListViewModelProtocol: RxViewModelProtocol {
-    associatedtype Nested: RxListViewModelProtocol
-    var nested: Nested { get set }
+open class RxViewModel<Base: Hashable>: RxViewModelProtocol {
     
-    init(title: String, base: Base, nested: Nested)
+    @Published public var base: Base
+    public var __base: Published<Base> { _base }
+    public var _$base: Published<Base>.Publisher { $base }
+    
+    @Published public var title: String
+    public var __title: Published<String> { _title }
+    public var _$title: Published<String>.Publisher { $title }
+    
+    public init(title: String = "", base: Base) {
+        self.title = title
+        self.base = base
+    }
 }
