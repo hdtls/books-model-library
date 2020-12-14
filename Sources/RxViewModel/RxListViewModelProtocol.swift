@@ -5,4 +5,4 @@ public protocol RxListViewModelProtocol
 : RxViewModelProtocol where Base: RandomAccessCollection, Base.Element: RxViewModelProtocol {}
 
 open class RxListViewModel<Base>
-: RxViewModel<Base> where Base: RandomAccessCollection & Hashable, Base.Element: RxViewModelProtocol {}
+: RxViewModel<Base>, RxListViewModelProtocol where Base: RandomAccessCollection & Hashable, Base.Element: RxViewModelProtocol {}
