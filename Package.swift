@@ -6,12 +6,13 @@ import PackageDescription
 let package = Package(
     name: "Books",
     platforms: [
-        .iOS(.v10),
-        .macOS(.v10_12)
+        .iOS(.v13),
+        .macOS(.v10_15)
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(name: "Books", targets: ["Books"])
+        .library(name: "Books", targets: ["Books"]),
+        .library(name: "RxViewModel", targets: ["RxViewModel"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -31,11 +32,20 @@ let package = Package(
                 .product(name: "Alamofire", package: "Alamofire"),
                 .product(name: "SnapKit", package: "SnapKit"),
                 .product(name: "Moya", package: "Moya"),
+                .product(name: "Kingfisher", package: "Kingfisher"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),
                 .product(name: "RxRelay", package: "RxSwift"),
                 .product(name: "RxDataSources", package: "RxDataSources"),
-                .product(name: "Kingfisher", package: "Kingfisher")
+                "RxViewModel"
+            ]
+        ),
+        .target(
+            name: "RxViewModel",
+            dependencies: [
+                .product(name: "RxSwift", package: "RxSwift"),
+                .product(name: "RxCocoa", package: "RxSwift"),
+                .product(name: "RxRelay", package: "RxSwift"),
             ]
         ),
         .testTarget(
