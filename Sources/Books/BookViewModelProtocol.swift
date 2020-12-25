@@ -4,12 +4,12 @@ import RxVMLibrary
 import RxCocoa
 #endif
 
-public protocol BookViewModelProtocol: RxViewModelProtocol where Base: BookProtocol {
-    var imageUrl: URL? { get }
-    var formattedAuthorsString: String { get }
+public protocol BookViewModelProtocol: RxViewModelProtocol where Base: BookModelProtocol {
+    var coverArtUrl: URL { get }
+    var artistName: String { get }
     #if canImport(RxCocoa)
-    var imageUrlDriver: Driver<URL?> { get }
-    var formattedAuthorsStringDriver: Driver<URL?> { get }
+    var coverArtURLDriver: Driver<URL> { get }
+    var artistNameDriver: Driver<URL> { get }
     #endif
 }
 
