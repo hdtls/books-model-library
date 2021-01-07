@@ -1,8 +1,8 @@
 import Foundation
 
 public protocol ArtworkModelProtocol: Model {
-    var width: CGFloat { get }
-    var height: CGFloat { get }
+    var width: Int { get }
+    var height: Int { get }
     var backgroundColor: String? { get }
     var foregroundColor: String? { get }
     var urlString: String { get }
@@ -11,9 +11,9 @@ public protocol ArtworkModelProtocol: Model {
 public struct Artwork: ArtworkModelProtocol {
     public var id: String { UUID().uuidString }
     
-    public let width: CGFloat
+    public let width: Int
     
-    public let height: CGFloat
+    public let height: Int
     
     public let backgroundColor: String?
     
@@ -22,8 +22,8 @@ public struct Artwork: ArtworkModelProtocol {
     public let urlString: String
     
     public init(
-        width: CGFloat,
-        height: CGFloat,
+        width: Int,
+        height: Int,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
         urlString: String
