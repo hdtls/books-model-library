@@ -14,11 +14,12 @@ public protocol BookModelProtocol: Model {
     var releaseDate: String { get }
     var artists: [Artist] { get }
     var genres: [Genre] { get }
-    var series: Series { get }
+    var series: Series? { get }
 }
 
 
 public struct Book: BookModelProtocol {
+    
     public let id: String
 
     public let name: String
@@ -33,7 +34,7 @@ public struct Book: BookModelProtocol {
     
     public let genres: [Genre]
     
-    public let series: Series
+    public let series: Series?
 
     public init(
         id: String = UUID().uuidString,
@@ -43,7 +44,7 @@ public struct Book: BookModelProtocol {
         releaseDate: String,
         artists: [Artist],
         genres: [Genre],
-        series: Series
+        series: Series? = nil
     ) {
         self.id = id
         self.name = name
