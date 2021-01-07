@@ -5,12 +5,12 @@ public protocol ArtistModelProtocol: Model {
 }
 
 public struct Artist: ArtistModelProtocol {
-    public let id: UUID
+    public let id: String
     
     public let name: String
     
     public init(
-        id: UUID = .init(),
+        id: String = UUID().uuidString,
         name: String
     ) {
         self.id = id

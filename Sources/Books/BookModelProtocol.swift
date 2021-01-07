@@ -11,7 +11,7 @@ public protocol BookModelProtocol: Model {
     var name: String { get }
     var coverArt: Artwork { get }
     var backgroundArt: Artwork? { get }
-    var releaseDate: Date { get }
+    var releaseDate: String { get }
     var artists: [Artist] { get }
     var genres: [Genre] { get }
     var series: Series { get }
@@ -19,7 +19,7 @@ public protocol BookModelProtocol: Model {
 
 
 public struct Book: BookModelProtocol {
-    public let id: UUID
+    public let id: String
 
     public let name: String
                         
@@ -27,7 +27,7 @@ public struct Book: BookModelProtocol {
     
     public let backgroundArt: Artwork?
             
-    public let releaseDate: Date
+    public let releaseDate: String
     
     public let artists: [Artist]
     
@@ -36,11 +36,11 @@ public struct Book: BookModelProtocol {
     public let series: Series
 
     public init(
-        id: UUID = .init(),
+        id: String = UUID().uuidString,
         name: String,
         coverArt: Artwork,
         backgroundArt: Artwork? = nil,
-        releaseDate: Date,
+        releaseDate: String,
         artists: [Artist],
         genres: [Genre],
         series: Series
