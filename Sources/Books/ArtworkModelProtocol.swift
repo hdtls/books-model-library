@@ -5,11 +5,11 @@ public protocol ArtworkModelProtocol: Model {
     var height: CGFloat { get }
     var backgroundColor: String? { get }
     var foregroundColor: String? { get }
-    var url: String { get }
+    var urlString: String { get }
 }
 
 public struct Artwork: ArtworkModelProtocol {
-    public let id: UUID
+    public var id: String { UUID().uuidString }
     
     public let width: CGFloat
     
@@ -19,21 +19,19 @@ public struct Artwork: ArtworkModelProtocol {
     
     public let foregroundColor: String?
     
-    public let url: String
+    public let urlString: String
     
     public init(
-        id: UUID = .init(),
         width: CGFloat,
         height: CGFloat,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
-        url: String
+        urlString: String
     ) {
-        self.id = id
         self.width = width
         self.height = height
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
-        self.url = url
+        self.urlString = urlString
     }
 }
