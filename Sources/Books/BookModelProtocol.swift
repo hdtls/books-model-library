@@ -9,6 +9,8 @@ public protocol BookModelProtocol: Model {
     associatedtype Series: SeriesModelProtocol
     
     var name: String { get }
+    var alias: String? { get }
+    var summary: String? { get }
     var coverArt: Artwork { get }
     var backgroundArt: Artwork? { get }
     var releaseDate: String { get }
@@ -24,6 +26,10 @@ public struct Book: BookModelProtocol {
 
     public let name: String
                         
+    public let alias: String?
+    
+    public let summary: String?
+
     public let coverArt: Artwork
     
     public let backgroundArt: Artwork?
@@ -35,10 +41,12 @@ public struct Book: BookModelProtocol {
     public let genres: [Genre]
     
     public let series: Series?
-
+    
     public init(
         id: String = UUID().uuidString,
         name: String,
+        alias: String? = nil,
+        summary: String?,
         coverArt: Artwork,
         backgroundArt: Artwork? = nil,
         releaseDate: String,
@@ -48,6 +56,8 @@ public struct Book: BookModelProtocol {
     ) {
         self.id = id
         self.name = name
+        self.alias = alias
+        self.summary = summary
         self.coverArt = coverArt
         self.backgroundArt = backgroundArt
         self.releaseDate = releaseDate
