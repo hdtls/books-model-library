@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Model: Identifiable, Hashable, Codable {}
+public protocol Model: Hashable, Codable {}
 
 public protocol BookModelProtocol: Model {
     associatedtype Artwork: ArtworkModelProtocol
@@ -18,7 +18,6 @@ public protocol BookModelProtocol: Model {
     var genres: [Genre] { get }
     var series: Series? { get }
 }
-
 
 public struct Book: BookModelProtocol {
     
@@ -66,3 +65,6 @@ public struct Book: BookModelProtocol {
         self.series = series
     }
 }
+
+@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+extension Book: Identifiable {}
