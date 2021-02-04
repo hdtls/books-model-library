@@ -1,7 +1,7 @@
 import XCTest
 
-import BooksTests
+import BooksModelLibraryTests
 
 var tests = [XCTestCaseEntry]()
-tests += BooksTests.allTests()
+tests += BooksModelLibraryTests.allTests()
 XCTMain(tests)
