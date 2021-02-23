@@ -8,6 +8,7 @@ public protocol BookModelProtocol: Model {
     associatedtype Genre: GenreModelProtocol
     associatedtype Series: SeriesModelProtocol
     
+    var id: String { get }
     var name: String { get }
     var alias: String? { get }
     var summary: String? { get }
