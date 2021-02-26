@@ -9,7 +9,8 @@ public protocol ArtworkModelProtocol: Model {
 }
 
 public struct Artwork: ArtworkModelProtocol {
-    public var id: String { UUID().uuidString }
+    
+    public let id: String
     
     public let width: Int
     
@@ -22,17 +23,31 @@ public struct Artwork: ArtworkModelProtocol {
     public let urlString: String
     
     public init(
+        id: String = UUID().uuidString,
         width: Int,
         height: Int,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
         urlString: String
     ) {
+        self.id = id
         self.width = width
         self.height = height
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.urlString = urlString
+    }
+    
+    @inlinable
+    public init() {
+        id = UUID().uuidString
+        // Because user may use `width` and `height` to calculate aspect ratio of
+        // this artwork, so use value `1` instead of `Int.init()`.
+        width = 1
+        height = 1
+        backgroundColor = nil
+        foregroundColor = nil
+        urlString = .init()
     }
 }
 

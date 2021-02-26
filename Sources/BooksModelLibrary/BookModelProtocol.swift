@@ -1,8 +1,12 @@
 import Foundation
 
-public protocol Model: Hashable, Codable {}
+public protocol Model: Hashable, Codable {
+    
+    init()
+}
 
 public protocol BookModelProtocol: Model {
+    
     associatedtype Artwork: ArtworkModelProtocol
     associatedtype Artist: ArtistModelProtocol
     associatedtype Genre: GenreModelProtocol
@@ -64,6 +68,20 @@ public struct Book: BookModelProtocol {
         self.artists = artists
         self.genres = genres
         self.series = series
+    }
+    
+    @inlinable
+    public init() {
+        id = UUID.init().uuidString
+        name = ""
+        alias = nil
+        summary = nil
+        coverArt = .init()
+        backgroundArt = nil
+        releaseDate = ""
+        artists = []
+        genres = []
+        series = nil
     }
 }
 

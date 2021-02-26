@@ -5,6 +5,7 @@ public protocol GenreModelProtocol: Model {
 }
 
 public struct Genre: GenreModelProtocol {
+    
     public let id: String
     
     public let name: String
@@ -15,6 +16,12 @@ public struct Genre: GenreModelProtocol {
     ) {
         self.id = id
         self.name = name
+    }
+    
+    @inlinable
+    public init() {
+        id = UUID().uuidString
+        name = .init()
     }
 }
 
