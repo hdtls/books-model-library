@@ -5,6 +5,7 @@ public protocol ArtistModelProtocol: Model {
 }
 
 public struct Artist: ArtistModelProtocol {
+    
     public let id: String
     
     public let name: String
@@ -15,6 +16,12 @@ public struct Artist: ArtistModelProtocol {
     ) {
         self.id = id
         self.name = name
+    }
+    
+    @inlinable
+    public init() {
+        id = UUID().uuidString
+        name = .init()
     }
 }
 

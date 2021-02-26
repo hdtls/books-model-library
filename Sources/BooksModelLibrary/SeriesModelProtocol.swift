@@ -5,6 +5,7 @@ public protocol SeriesModelProtocol: Model {
 }
 
 public struct Series: SeriesModelProtocol {
+    
     public let id: String
     
     public let name: String
@@ -15,6 +16,12 @@ public struct Series: SeriesModelProtocol {
     ) {
         self.id = id
         self.name = name
+    }
+    
+    @inlinable
+    public init() {
+        id = UUID().uuidString
+        name = .init()
     }
 }
 
