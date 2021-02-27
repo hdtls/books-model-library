@@ -10,7 +10,7 @@ public protocol ArtworkModelProtocol: Model {
 
 public struct Artwork: ArtworkModelProtocol {
     
-    public let id: String
+    public var id: String { UUID().uuidString }
     
     public let width: Int
     
@@ -23,14 +23,12 @@ public struct Artwork: ArtworkModelProtocol {
     public let urlString: String
     
     public init(
-        id: String = UUID().uuidString,
         width: Int,
         height: Int,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
         urlString: String
     ) {
-        self.id = id
         self.width = width
         self.height = height
         self.backgroundColor = backgroundColor
@@ -40,7 +38,6 @@ public struct Artwork: ArtworkModelProtocol {
     
     @inlinable
     public init() {
-        id = UUID().uuidString
         // Because user may use `width` and `height` to calculate aspect ratio of
         // this artwork, so use value `1` instead of `Int.init()`.
         width = 1
