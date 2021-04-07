@@ -11,39 +11,45 @@ public protocol BookModelProtocol: Model {
     associatedtype Author: AuthorModelProtocol
     associatedtype Category: CategoryModelProtocol
     
-    var id: String { get }
-    var name: String { get }
-    var aliases: [String]? { get }
-    var coverImage: Image { get }
-    var excerpt: String? { get }
-    var backgroundImage: Image? { get }
-    var authors: [Author] { get }
-    var schedule: Int { get }
-    var copyrighted: Bool { get }
-    var categories: [Category] { get }
+    var id: String { get set }
+    var name: String { get set }
+    var aliases: [String]? { get set }
+    var coverImage: Image { get set }
+    var excerpt: String? { get set }
+    var backgroundImage: Image? { get set }
+    var promoImage: Image? { get set }
+    var authors: [Author] { get set }
+    var schedule: Int { get set }
+    var copyrighted: Bool { get set }
+    var categories: [Category] { get set }
+    var chapters: [Chapter]? { get set }
 }
 
 public struct Book: BookModelProtocol {
     
-    public let id: String
+    public var id: String
 
-    public let name: String
+    public var name: String
                         
-    public let aliases: [String]?
+    public var aliases: [String]?
     
-    public let excerpt: String?
+    public var excerpt: String?
 
-    public let coverImage: ImageFile
+    public var coverImage: ImageFile
     
-    public let backgroundImage: ImageFile?
+    public var backgroundImage: ImageFile?
     
-    public let schedule: Int
+    public var promoImage: ImageFile?
     
-    public let copyrighted: Bool
+    public var schedule: Int
+    
+    public var copyrighted: Bool
                 
-    public let authors: [Author]
+    public var authors: [Author]
     
-    public let categories: [Category]
+    public var categories: [Category]
+    
+    public var chapters: [Chapter]?
         
     public init(
         id: String = UUID().uuidString,
@@ -52,10 +58,12 @@ public struct Book: BookModelProtocol {
         excerpt: String?,
         coverImage: ImageFile,
         backgroundImage: ImageFile? = nil,
+        promoImage: ImageFile? = nil,
         schedule: Int = 0,
         copyrighted: Bool = false,
         authors: [Author],
-        categories: [Category]
+        categories: [Category],
+        chapters: [Chapter]? = nil
     ) {
         self.id = id
         self.name = name
@@ -63,10 +71,12 @@ public struct Book: BookModelProtocol {
         self.excerpt = excerpt
         self.coverImage = coverImage
         self.backgroundImage = backgroundImage
+        self.promoImage = promoImage
         self.schedule = schedule
         self.copyrighted = copyrighted
         self.authors = authors
         self.categories = categories
+        self.chapters = chapters
     }
     
     @inlinable
@@ -77,10 +87,12 @@ public struct Book: BookModelProtocol {
         excerpt = nil
         coverImage = .init()
         backgroundImage = nil
+        promoImage = nil
         schedule = 0
         copyrighted = false
         authors = []
         categories = []
+        chapters = nil
     }
 }
 
