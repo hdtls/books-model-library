@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol ArtistModelProtocol: Model {
+public protocol AuthorModelProtocol: Model {
     var name: String { get }
 }
 
-public struct Artist: ArtistModelProtocol {
+public struct Author: AuthorModelProtocol {
     
     public let id: String
     
@@ -26,4 +26,4 @@ public struct Artist: ArtistModelProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Artist: Identifiable {}
+extension Author: Identifiable {}

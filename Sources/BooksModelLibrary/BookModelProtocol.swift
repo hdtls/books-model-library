@@ -10,7 +10,7 @@ public protocol Model: Hashable, Codable {
 public protocol BookModelProtocol: Model {
     
     associatedtype Artwork: ArtworkModelProtocol
-    associatedtype Artist: ArtistModelProtocol
+    associatedtype Author: AuthorModelProtocol
     associatedtype Category: CategoryModelProtocol
     associatedtype Series: SeriesModelProtocol
     
@@ -21,7 +21,7 @@ public protocol BookModelProtocol: Model {
     var coverArt: Artwork { get }
     var backgroundArt: Artwork? { get }
     var releaseDate: String { get }
-    var artists: [Artist] { get }
+    var authors: [Author] { get }
     var categories: [Category] { get }
     var series: Series? { get }
 }
@@ -42,7 +42,7 @@ public struct Book: BookModelProtocol {
             
     public let releaseDate: String
     
-    public let artists: [Artist]
+    public let authors: [Author]
     
     public let categories: [Category]
     
@@ -56,7 +56,7 @@ public struct Book: BookModelProtocol {
         coverArt: Artwork,
         backgroundArt: Artwork? = nil,
         releaseDate: String,
-        artists: [Artist],
+        authors: [Author],
         categories: [Category],
         series: Series? = nil
     ) {
@@ -67,7 +67,7 @@ public struct Book: BookModelProtocol {
         self.coverArt = coverArt
         self.backgroundArt = backgroundArt
         self.releaseDate = releaseDate
-        self.artists = artists
+        self.authors = authors
         self.categories = categories
         self.series = series
     }
@@ -81,7 +81,7 @@ public struct Book: BookModelProtocol {
         coverArt = .init()
         backgroundArt = nil
         releaseDate = ""
-        artists = []
+        authors = []
         categories = []
         series = nil
     }
