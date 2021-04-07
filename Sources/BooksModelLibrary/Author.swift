@@ -1,15 +1,15 @@
 import Foundation
 
-public protocol SeriesModelProtocol: Model {
+public protocol AuthorModelProtocol: Model {
     var name: String { get }
 }
 
-public struct Series: SeriesModelProtocol {
+public struct Author: AuthorModelProtocol {
     
     public let id: String
     
     public let name: String
-    
+        
     public init(
         id: String = UUID().uuidString,
         name: String
@@ -26,4 +26,4 @@ public struct Series: SeriesModelProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Series: Identifiable {}
+extension Author: Identifiable {}

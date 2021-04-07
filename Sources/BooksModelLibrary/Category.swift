@@ -1,27 +1,24 @@
 import Foundation
 
 public protocol CategoryModelProtocol: Model {
-    var name: String { get }
+    var name: String { get set }
 }
 
 public struct Category: CategoryModelProtocol {
     
-    public let id: String
+    public var id: String
     
-    public let name: String
-    
-    public init(
-        id: String = UUID().uuidString,
-        name: String
-    ) {
-        self.id = id
-        self.name = name
-    }
+    public var name: String
     
     @inlinable
     public init() {
         id = UUID().uuidString
         name = .init()
+    }
+    
+    public init(name: String) {
+        self.id = UUID().uuidString
+        self.name = name
     }
 }
 

@@ -1,29 +1,26 @@
 import Foundation
 
-#if !canImport(Vapor)
 public protocol Model: Hashable, Codable {
     
     init()
 }
-#endif
 
 public protocol BookModelProtocol: Model {
     
-    associatedtype Artwork: ArtworkModelProtocol
+    associatedtype Image: ImageModelProtocol
     associatedtype Author: AuthorModelProtocol
     associatedtype Category: CategoryModelProtocol
-    associatedtype Series: SeriesModelProtocol
     
     var id: String { get }
     var name: String { get }
     var aliases: [String]? { get }
-    var summary: String? { get }
-    var coverArt: Artwork { get }
-    var backgroundArt: Artwork? { get }
-    var releaseDate: String { get }
+    var coverImage: Image { get }
+    var excerpt: String? { get }
+    var backgroundImage: Image? { get }
     var authors: [Author] { get }
+    var schedule: Int { get }
+    var copyrighted: Bool { get }
     var categories: [Category] { get }
-    var series: Series? { get }
 }
 
 public struct Book: BookModelProtocol {
@@ -34,42 +31,42 @@ public struct Book: BookModelProtocol {
                         
     public let aliases: [String]?
     
-    public let summary: String?
+    public let excerpt: String?
 
-    public let coverArt: Artwork
+    public let coverImage: ImageFile
     
-    public let backgroundArt: Artwork?
-            
-    public let releaseDate: String
+    public let backgroundImage: ImageFile?
     
+    public let schedule: Int
+    
+    public let copyrighted: Bool
+                
     public let authors: [Author]
     
     public let categories: [Category]
-    
-    public let series: Series?
-    
+        
     public init(
         id: String = UUID().uuidString,
         name: String,
         aliases: [String]? = nil,
-        summary: String?,
-        coverArt: Artwork,
-        backgroundArt: Artwork? = nil,
-        releaseDate: String,
+        excerpt: String?,
+        coverImage: ImageFile,
+        backgroundImage: ImageFile? = nil,
+        schedule: Int = 0,
+        copyrighted: Bool = false,
         authors: [Author],
-        categories: [Category],
-        series: Series? = nil
+        categories: [Category]
     ) {
         self.id = id
         self.name = name
         self.aliases = aliases
-        self.summary = summary
-        self.coverArt = coverArt
-        self.backgroundArt = backgroundArt
-        self.releaseDate = releaseDate
+        self.excerpt = excerpt
+        self.coverImage = coverImage
+        self.backgroundImage = backgroundImage
+        self.schedule = schedule
+        self.copyrighted = copyrighted
         self.authors = authors
         self.categories = categories
-        self.series = series
     }
     
     @inlinable
@@ -77,13 +74,13 @@ public struct Book: BookModelProtocol {
         id = UUID.init().uuidString
         name = ""
         aliases = nil
-        summary = nil
-        coverArt = .init()
-        backgroundArt = nil
-        releaseDate = ""
+        excerpt = nil
+        coverImage = .init()
+        backgroundImage = nil
+        schedule = 0
+        copyrighted = false
         authors = []
         categories = []
-        series = nil
     }
 }
 
