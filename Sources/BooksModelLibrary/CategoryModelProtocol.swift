@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol GenreModelProtocol: Model {
+public protocol CategoryModelProtocol: Model {
     var name: String { get }
 }
 
-public struct Genre: GenreModelProtocol {
+public struct Category: CategoryModelProtocol {
     
     public let id: String
     
@@ -26,4 +26,4 @@ public struct Genre: GenreModelProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Genre: Identifiable {}
+extension Category: Identifiable {}

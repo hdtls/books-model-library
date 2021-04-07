@@ -1,15 +1,17 @@
 import Foundation
 
+#if !canImport(Vapor)
 public protocol Model: Hashable, Codable {
     
     init()
 }
+#endif
 
 public protocol BookModelProtocol: Model {
     
     associatedtype Artwork: ArtworkModelProtocol
     associatedtype Artist: ArtistModelProtocol
-    associatedtype Genre: GenreModelProtocol
+    associatedtype Category: CategoryModelProtocol
     associatedtype Series: SeriesModelProtocol
     
     var id: String { get }
@@ -20,7 +22,7 @@ public protocol BookModelProtocol: Model {
     var backgroundArt: Artwork? { get }
     var releaseDate: String { get }
     var artists: [Artist] { get }
-    var genres: [Genre] { get }
+    var categories: [Category] { get }
     var series: Series? { get }
 }
 
@@ -42,7 +44,7 @@ public struct Book: BookModelProtocol {
     
     public let artists: [Artist]
     
-    public let genres: [Genre]
+    public let categories: [Category]
     
     public let series: Series?
     
@@ -55,7 +57,7 @@ public struct Book: BookModelProtocol {
         backgroundArt: Artwork? = nil,
         releaseDate: String,
         artists: [Artist],
-        genres: [Genre],
+        categories: [Category],
         series: Series? = nil
     ) {
         self.id = id
@@ -66,7 +68,7 @@ public struct Book: BookModelProtocol {
         self.backgroundArt = backgroundArt
         self.releaseDate = releaseDate
         self.artists = artists
-        self.genres = genres
+        self.categories = categories
         self.series = series
     }
     
@@ -80,7 +82,7 @@ public struct Book: BookModelProtocol {
         backgroundArt = nil
         releaseDate = ""
         artists = []
-        genres = []
+        categories = []
         series = nil
     }
 }
