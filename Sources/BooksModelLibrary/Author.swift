@@ -1,14 +1,14 @@
 import Foundation
 
 public protocol AuthorModelProtocol: Model {
-    var name: String { get }
+    var name: String { get set }
 }
 
 public struct Author: AuthorModelProtocol {
     
-    public let id: String
+    public var id: String
     
-    public let name: String
+    public var name: String
         
     public init(
         id: String = UUID().uuidString,
