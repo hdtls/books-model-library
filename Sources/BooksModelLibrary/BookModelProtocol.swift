@@ -16,7 +16,7 @@ public protocol BookModelProtocol: Model {
     
     var id: String { get }
     var name: String { get }
-    var alias: String? { get }
+    var aliases: [String]? { get }
     var summary: String? { get }
     var coverArt: Artwork { get }
     var backgroundArt: Artwork? { get }
@@ -32,7 +32,7 @@ public struct Book: BookModelProtocol {
 
     public let name: String
                         
-    public let alias: String?
+    public let aliases: [String]?
     
     public let summary: String?
 
@@ -51,7 +51,7 @@ public struct Book: BookModelProtocol {
     public init(
         id: String = UUID().uuidString,
         name: String,
-        alias: String? = nil,
+        aliases: [String]? = nil,
         summary: String?,
         coverArt: Artwork,
         backgroundArt: Artwork? = nil,
@@ -62,7 +62,7 @@ public struct Book: BookModelProtocol {
     ) {
         self.id = id
         self.name = name
-        self.alias = alias
+        self.aliases = aliases
         self.summary = summary
         self.coverArt = coverArt
         self.backgroundArt = backgroundArt
@@ -76,7 +76,7 @@ public struct Book: BookModelProtocol {
     public init() {
         id = UUID.init().uuidString
         name = ""
-        alias = nil
+        aliases = nil
         summary = nil
         coverArt = .init()
         backgroundArt = nil
