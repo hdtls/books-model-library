@@ -1,8 +1,8 @@
 import Foundation
 
 public protocol ImageModelProtocol: Model {
-    var width: Int { get }
-    var height: Int { get }
+    var width: Int? { get }
+    var height: Int? { get }
     var backgroundColor: String? { get }
     var foregroundColor: String? { get }
     var url: String { get }
@@ -12,9 +12,9 @@ public struct ImageFile: ImageModelProtocol {
     
     public var id: String { UUID().uuidString }
     
-    public let width: Int
+    public let width: Int?
     
-    public let height: Int
+    public let height: Int?
     
     public let backgroundColor: String?
     
@@ -23,8 +23,8 @@ public struct ImageFile: ImageModelProtocol {
     public let url: String
     
     public init(
-        width: Int,
-        height: Int,
+        width: Int?,
+        height: Int?,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
         url: String
@@ -40,8 +40,8 @@ public struct ImageFile: ImageModelProtocol {
     public init() {
         // Because user may use `width` and `height` to calculate aspect ratio of
         // this artwork, so use value `1` instead of `Int.init()`.
-        width = 1
-        height = 1
+        width = nil
+        height = nil
         backgroundColor = nil
         foregroundColor = nil
         url = .init()
