@@ -1,14 +1,14 @@
 import Foundation
 
-public protocol ArtworkModelProtocol: Model {
+public protocol ImageModelProtocol: Model {
     var width: Int { get }
     var height: Int { get }
     var backgroundColor: String? { get }
     var foregroundColor: String? { get }
-    var urlString: String { get }
+    var url: String { get }
 }
 
-public struct Artwork: ArtworkModelProtocol {
+public struct ImageFile: ImageModelProtocol {
     
     public var id: String { UUID().uuidString }
     
@@ -20,20 +20,20 @@ public struct Artwork: ArtworkModelProtocol {
     
     public let foregroundColor: String?
     
-    public let urlString: String
+    public let url: String
     
     public init(
         width: Int,
         height: Int,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
-        urlString: String
+        url: String
     ) {
         self.width = width
         self.height = height
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
-        self.urlString = urlString
+        self.url = url
     }
     
     @inlinable
@@ -44,9 +44,9 @@ public struct Artwork: ArtworkModelProtocol {
         height = 1
         backgroundColor = nil
         foregroundColor = nil
-        urlString = .init()
+        url = .init()
     }
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Artwork: Identifiable {}
+extension ImageFile: Identifiable {}
