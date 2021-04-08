@@ -15,7 +15,7 @@ public protocol BookModelProtocol: Model {
     var name: String { get set }
     var aliases: [String]? { get set }
     var coverImage: Image { get set }
-    var excerpt: String? { get set }
+    var excerpt: String { get set }
     var backgroundImage: Image? { get set }
     var promoImage: Image? { get set }
     var authors: [Author] { get set }
@@ -23,6 +23,7 @@ public protocol BookModelProtocol: Model {
     var copyrighted: Bool { get set }
     var categories: [Category] { get set }
     var chapters: [Chapter]? { get set }
+    var area: Area? { get set }
 }
 
 public struct Book: BookModelProtocol {
@@ -33,7 +34,7 @@ public struct Book: BookModelProtocol {
                         
     public var aliases: [String]?
     
-    public var excerpt: String?
+    public var excerpt: String
 
     public var coverImage: ImageFile
     
@@ -50,12 +51,14 @@ public struct Book: BookModelProtocol {
     public var categories: [Category]
     
     public var chapters: [Chapter]?
+    
+    public var area: Area?
         
     public init(
         id: String = UUID().uuidString,
         name: String,
         aliases: [String]? = nil,
-        excerpt: String?,
+        excerpt: String,
         coverImage: ImageFile,
         backgroundImage: ImageFile? = nil,
         promoImage: ImageFile? = nil,
@@ -63,7 +66,8 @@ public struct Book: BookModelProtocol {
         copyrighted: Bool = false,
         authors: [Author],
         categories: [Category],
-        chapters: [Chapter]? = nil
+        chapters: [Chapter]? = nil,
+        area: Area? = nil
     ) {
         self.id = id
         self.name = name
@@ -77,14 +81,15 @@ public struct Book: BookModelProtocol {
         self.authors = authors
         self.categories = categories
         self.chapters = chapters
+        self.area = area
     }
     
     @inlinable
     public init() {
         id = UUID.init().uuidString
-        name = ""
+        name = .init()
         aliases = nil
-        excerpt = nil
+        excerpt = .init()
         coverImage = .init()
         backgroundImage = nil
         promoImage = nil
@@ -93,6 +98,7 @@ public struct Book: BookModelProtocol {
         authors = []
         categories = []
         chapters = nil
+        area = nil
     }
 }
 
