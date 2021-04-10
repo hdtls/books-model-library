@@ -6,13 +6,13 @@ public protocol AreaModelProtocol: Model {
 
 public struct Area: AreaModelProtocol {
     
-    public var id: String
+    public var id: UInt64
     
     public var name: String
     
     @inlinable
     public init() {
-        self.id = UUID().uuidString
+        self.id = .init()
         self.name = .init()
     }
 }
