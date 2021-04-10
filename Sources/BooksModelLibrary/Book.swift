@@ -11,11 +11,11 @@ public protocol BookModelProtocol: Model {
     associatedtype Author: AuthorModelProtocol
     associatedtype Category: CategoryModelProtocol
     
-    var id: String { get set }
+    var id: UInt64 { get set }
     var name: String { get set }
     var aliases: [String]? { get set }
     var coverImage: Image { get set }
-    var excerpt: String { get set }
+    var excerpt: String? { get set }
     var backgroundImage: Image? { get set }
     var promoImage: Image? { get set }
     var authors: [Author] { get set }
@@ -28,13 +28,13 @@ public protocol BookModelProtocol: Model {
 
 public struct Book: BookModelProtocol {
     
-    public var id: String
+    public var id: UInt64
 
     public var name: String
                         
     public var aliases: [String]?
     
-    public var excerpt: String
+    public var excerpt: String?
 
     public var coverImage: ImageFile
     
@@ -55,7 +55,7 @@ public struct Book: BookModelProtocol {
     public var area: Area?
         
     public init(
-        id: String = UUID().uuidString,
+        id: UInt64,
         name: String,
         aliases: [String]? = nil,
         excerpt: String,
@@ -86,14 +86,14 @@ public struct Book: BookModelProtocol {
     
     @inlinable
     public init() {
-        id = UUID.init().uuidString
+        id = .init()
         name = .init()
         aliases = nil
         excerpt = .init()
         coverImage = .init()
         backgroundImage = nil
         promoImage = nil
-        schedule = 0
+        schedule = .init()
         copyrighted = false
         authors = []
         categories = []
