@@ -6,18 +6,18 @@ public protocol CategoryModelProtocol: Model {
 
 public struct Category: CategoryModelProtocol {
     
-    public var id: String
+    public var id: UInt64
     
     public var name: String
     
     @inlinable
     public init() {
-        id = UUID().uuidString
+        id = .init()
         name = .init()
     }
     
     public init(name: String) {
-        self.id = UUID().uuidString
+        self.id = .init()
         self.name = name
     }
 }
