@@ -6,21 +6,20 @@ public protocol AuthorModelProtocol: Model {
 
 public struct Author: AuthorModelProtocol {
     
-    public var id: String
+    public var id: UInt64
     
     public var name: String
         
     public init(
-        id: String = UUID().uuidString,
         name: String
     ) {
-        self.id = id
+        self.id = .init()
         self.name = name
     }
     
     @inlinable
     public init() {
-        id = UUID().uuidString
+        id = .init()
         name = .init()
     }
 }
