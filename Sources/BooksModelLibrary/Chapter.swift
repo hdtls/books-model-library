@@ -7,7 +7,7 @@ public protocol ChapterModelProtocol: Model {
 
 public struct Chapter: ChapterModelProtocol {
     
-    public var id: String
+    public var id: UInt64
     
     public var name: String
     
@@ -15,13 +15,13 @@ public struct Chapter: ChapterModelProtocol {
     
     @inlinable
     public init() {
-        id = UUID().uuidString
+        id = .init()
         name = .init()
         imageUrls = nil
     }
     
     public init(name: String, imageUrls: [ImageFile]?) {
-        self.id = UUID().uuidString
+        self.id = .init()
         self.name = name
         self.imageUrls = imageUrls
     }
