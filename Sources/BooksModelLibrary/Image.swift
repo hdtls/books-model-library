@@ -5,7 +5,8 @@ public protocol ImageModelProtocol: Model {
     var height: Int? { get }
     var backgroundColor: String? { get }
     var foregroundColor: String? { get }
-    var url: String { get }
+    var url: String? { get }
+    var refUrls: [String]? { get }
 }
 
 public struct ImageFile: ImageModelProtocol {
@@ -20,20 +21,24 @@ public struct ImageFile: ImageModelProtocol {
     
     public let foregroundColor: String?
     
-    public let url: String
+    public let url: String?
+    
+    public let refUrls: [String]?
     
     public init(
         width: Int?,
         height: Int?,
         backgroundColor: String? = nil,
         foregroundColor: String? = nil,
-        url: String
+        url: String,
+        refUrls: [String]? = nil
     ) {
         self.width = width
         self.height = height
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.url = url
+        self.refUrls = refUrls
     }
     
     @inlinable
@@ -45,6 +50,7 @@ public struct ImageFile: ImageModelProtocol {
         backgroundColor = nil
         foregroundColor = nil
         url = .init()
+        refUrls = nil
     }
 }
 
