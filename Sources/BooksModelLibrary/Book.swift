@@ -16,7 +16,6 @@ public protocol BookModelProtocol: Model {
     var aliases: [String]? { get set }
     var coverImage: Image { get set }
     var excerpt: String? { get set }
-    var signature: String { get set }
     var backgroundImage: Image? { get set }
     var promoImage: Image? { get set }
     var authors: [Author] { get set }
@@ -37,8 +36,6 @@ public struct Book: BookModelProtocol {
     
     public var excerpt: String?
     
-    public var signature: String
-
     public var coverImage: ImageFile
     
     public var backgroundImage: ImageFile?
@@ -85,7 +82,6 @@ public struct Book: BookModelProtocol {
         self.categories = categories
         self.chapters = chapters
         self.area = area
-        self.signature = .init()
     }
     
     @inlinable
@@ -94,7 +90,6 @@ public struct Book: BookModelProtocol {
         name = .init()
         aliases = nil
         excerpt = .init()
-        signature = .init()
         coverImage = .init()
         backgroundImage = nil
         promoImage = nil
