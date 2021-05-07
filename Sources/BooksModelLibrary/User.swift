@@ -4,7 +4,7 @@ public protocol AuthorModelProtocol: Model {
     var name: String { get set }
 }
 
-public struct Author: AuthorModelProtocol {
+public struct User: AuthorModelProtocol {
     
     public var id: UInt64
     
@@ -25,4 +25,14 @@ public struct Author: AuthorModelProtocol {
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-extension Author: Identifiable {}
+extension User: Identifiable {}
+
+extension User {
+
+    public enum Role: String, CaseIterable, Codable {
+        case reader
+        case robot
+        case author
+        case publisher
+    }
+}

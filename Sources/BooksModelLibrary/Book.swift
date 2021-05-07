@@ -46,7 +46,7 @@ public struct Book: BookModelProtocol {
     
     public var copyrighted: Bool
                 
-    public var authors: [Author]
+    public var authors: [User]
     
     public var categories: [Category]
     
@@ -64,7 +64,7 @@ public struct Book: BookModelProtocol {
         promoImage: ImageFile? = nil,
         schedule: Int = 0,
         copyrighted: Bool = false,
-        authors: [Author],
+        authors: [User],
         categories: [Category],
         chapters: [Chapter]? = nil,
         area: Area? = nil
