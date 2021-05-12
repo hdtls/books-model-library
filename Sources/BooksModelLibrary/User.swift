@@ -1,26 +1,26 @@
 import Foundation
 
 public protocol AuthorModelProtocol: Model {
-    var name: String { get set }
+    var username: String { get set }
 }
 
 public struct User: AuthorModelProtocol {
     
     public var id: UInt64
     
-    public var name: String
-        
+    public var username: String
+            
     public init(
-        name: String
+        username: String
     ) {
         self.id = .init()
-        self.name = name
+        self.username = username
     }
     
     @inlinable
     public init() {
         id = .init()
-        name = .init()
+        username = .init()
     }
 }
 
