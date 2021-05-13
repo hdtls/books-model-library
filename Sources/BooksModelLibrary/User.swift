@@ -2,6 +2,7 @@ import Foundation
 
 public protocol AuthorModelProtocol: Model {
     var username: String { get set }
+    var role: User.Role { get set }
 }
 
 public struct User: AuthorModelProtocol {
@@ -9,18 +10,20 @@ public struct User: AuthorModelProtocol {
     public var id: UInt64
     
     public var username: String
-            
-    public init(
-        username: String
-    ) {
+    
+    public var role: Role
+    
+    public init(username: String) {
         self.id = .init()
         self.username = username
+        self.role = .reader
     }
     
     @inlinable
     public init() {
         id = .init()
         username = .init()
+        role = .reader
     }
 }
 
@@ -28,11 +31,30 @@ public struct User: AuthorModelProtocol {
 extension User: Identifiable {}
 
 extension User {
-
+    
     public enum Role: String, CaseIterable, Codable {
         case reader
         case robot
         case author
         case publisher
+        case admin
+    }
+}
+
+extension User.Role: Comparable {
+    
+    public static func < (lhs: User.Role, rhs: User.Role) -> Bool {
+        switch lhs {
+            case .reader:
+                return rhs != reader
+            case .robot:
+                return rhs != .reader && rhs != .robot
+            case .author:
+                return rhs == .publisher || rhs == .admin
+            case .publisher:
+                return rhs == .admin
+            case .admin:
+                return false
+        }
     }
 }
