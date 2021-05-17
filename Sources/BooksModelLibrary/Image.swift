@@ -4,7 +4,6 @@ public protocol ImageModelProtocol: Model {
     var width: Int { get }
     var height: Int { get }
     var url: String { get }
-    var refUrl: String? { get }
 }
 
 public struct ImageFile: ImageModelProtocol {
@@ -16,19 +15,15 @@ public struct ImageFile: ImageModelProtocol {
     public let height: Int
     
     public let url: String
-    
-    public let refUrl: String?
-    
+        
     public init(
         width: Int,
         height: Int,
-        url: String,
-        refUrl: String? = nil
+        url: String
     ) {
         self.width = width
         self.height = height
         self.url = url
-        self.refUrl = refUrl
     }
     
     @inlinable
@@ -38,7 +33,6 @@ public struct ImageFile: ImageModelProtocol {
         width = 1
         height = 1
         url = .init()
-        refUrl = nil
     }
 }
 
