@@ -24,6 +24,7 @@ public protocol BookModelProtocol: Model {
     var categories: [Category] { get set }
     var chapters: [Chapter]? { get set }
     var area: Area? { get set }
+    var areaId: UInt64? { get set }
 }
 
 public struct Book: BookModelProtocol {
@@ -53,6 +54,8 @@ public struct Book: BookModelProtocol {
     public var chapters: [Chapter]?
     
     public var area: Area?
+    
+    public var areaId: UInt64?
         
     public init(
         id: UInt64,
@@ -82,6 +85,7 @@ public struct Book: BookModelProtocol {
         self.categories = categories
         self.chapters = chapters
         self.area = area
+        self.areaId = area?.id
     }
     
     @inlinable
@@ -99,6 +103,7 @@ public struct Book: BookModelProtocol {
         categories = []
         chapters = nil
         area = nil
+        areaId = nil
     }
 }
 
