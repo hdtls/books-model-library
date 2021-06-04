@@ -3,7 +3,7 @@ import Foundation
 public protocol ChapterModelProtocol: Model {
     var name: String { get set }
     var coverImage: ImageFile? { get set }
-    var refUrl: String? { get set }
+    var refUrls: [String]? { get set }
 }
 
 public struct Chapter: ChapterModelProtocol {
@@ -14,21 +14,21 @@ public struct Chapter: ChapterModelProtocol {
     
     public var coverImage: ImageFile?
     
-    public var refUrl: String?
+    public var refUrls: [String]?
         
     @inlinable
     public init() {
         id = .init()
         name = .init()
         coverImage = nil
-        refUrl = nil
+        refUrls = nil
     }
     
     public init(name: String, coverImage: ImageFile?) {
         self.id = .init()
         self.name = name
         self.coverImage = coverImage
-        self.refUrl = nil
+        self.refUrls = nil
     }
 }
 
