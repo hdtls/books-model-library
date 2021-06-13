@@ -2,6 +2,7 @@ import Foundation
 
 public protocol AuthorModelProtocol: Model {
     var username: String { get set }
+    var name: String? { get set }
     var role: User.Role { get set }
 }
 
@@ -11,11 +12,14 @@ public struct User: AuthorModelProtocol {
     
     public var username: String
     
+    public var name: String?
+    
     public var role: Role
     
-    public init(username: String) {
+    public init(username: String, name: String? = nil) {
         self.id = .init()
         self.username = username
+        self.name = name ?? username
         self.role = .reader
     }
     
@@ -23,6 +27,7 @@ public struct User: AuthorModelProtocol {
     public init() {
         id = .init()
         username = .init()
+        name = .init()
         role = .reader
     }
 }
